@@ -1,9 +1,9 @@
 function Message() {
-  const name = Math.random() < 0.5 ? 'OT' : '';
+  const sw = Math.random() < 0.5 ? '\u0FD5' : '';
   return (
-    <div>
-      <h1>Hello World</h1>  
-      {name && <p>Hello {name}</p>}
+    <div style={{ display: 'flex'}}>
+      <h1>Hello World</h1>
+      {sw && <span>{sw}</span>}
     </div>
   );
 }
