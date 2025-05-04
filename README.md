@@ -1,4 +1,4 @@
-### Conventions
+## Conventions
 
 - Imports
   - alias importing `React` not necessary.
@@ -24,7 +24,7 @@
   - avoiding dot import, will allow SonarScan for unused props.
   - use Pascal for interfaces and types.
 
-### Commands
+## Commands
 
 #### React
 
@@ -43,5 +43,6 @@
 - `git branch -M main`
 - `git commit -am "init commit"`
 
-### TBT Original
-- render app in 2 nodes, see if session shared.
+
+---
+*TBT Original: render app in 2 nodes, see if session shared.*
