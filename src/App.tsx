@@ -4,7 +4,6 @@ import Message from './components/Message';
 import ListGroup from './components/LG';
 import Alert from './components/Alert';
 import Button from './components/Button';
-import Modal from './components/Modal';
 import './App.css';
 
 const regions =
@@ -48,8 +47,6 @@ function App() {
           Deleting this item is a permenant action. <span>{'\u2615'}</span>
         </Alert>
       )}
-
-      <Modal />
     </div>
   );
 }
