@@ -42,3 +42,6 @@
 - `git add -A .`
 - `git branch -M main`
 - `git commit -am "init commit"`
+
+### TBT Original
+- render app in 2 nodes, see if session shared.
