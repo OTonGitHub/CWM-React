@@ -1,10 +1,8 @@
-import { type ReactNode } from 'react';
-
-type ButtonVariants = 'primary' | 'info' | 'danger';
+type ButtonType = 'primary' | 'info' | 'danger';
 
 interface ButtonProps {
-  children: ReactNode; // string better?
-  variant?: ButtonVariants;
+  children: string;
+  variant?: ButtonType;
   onClick: () => void;
 }
 

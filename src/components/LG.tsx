@@ -1,21 +1,13 @@
-import { MouseEvent, useState } from 'react';
+import { type MouseEvent, useState} from 'react';
 
 interface Props {
   items: string[];
   heading: string;
-  onSelect: (item: string) => void;
+  onSelect: (event: MouseEvent, item: string, index: number) => void;
 }
 
-const ListGroup = ({ heading, items, onSelect }: Readonly<Props>) => {
-  // avoiding dot import to allow SonarScan
+const ListGroup = ({ heading, items, onSelect }: Props) => {
   const [selectIX, setSelectIX] = useState(-1);
-
-  const handleClick = (event: MouseEvent, area: string, index: number) => {
-    setSelectIX(index);
-    console.log(
-      `Clicked ${index + 1} (${event.pageX}, ${event.pageY}): ${area}`
-    );
-  };
 
   const generateLG = (list: string[]) => {
     if (list.length === 0) return <p>N/A</p>;
@@ -30,8 +22,8 @@ const ListGroup = ({ heading, items, onSelect }: Readonly<Props>) => {
                 : 'list-group-item list-group-item-action'
             }
             onClick={(e) => {
-              handleClick(e, item, index); // refactor to use set, aka remove handler
-              onSelect(item);
+              onSelect(e, item, index);
+              setSelectIX(index);
             }}
           >
             {item}
@@ -49,4 +41,4 @@ const ListGroup = ({ heading, items, onSelect }: Readonly<Props>) => {
   );
 }
 
-export  default ListGroup;
+export default ListGroup;

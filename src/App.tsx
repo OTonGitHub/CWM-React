@@ -1,7 +1,10 @@
+import { useState, MouseEvent } from 'react';
+
 import Message from './components/Message';
 import ListGroup from './components/LG';
 import Alert from './components/Alert';
 import Button from './components/Button';
+import Modal from './components/Modal';
 import './App.css';
 
 const regions =
@@ -15,27 +18,38 @@ const regions =
       ]
     : [];
 
-const handleSetRegion = (item: string) => {
-  console.log(item);
-};
-
-const handleDelete = () => {
-  console.log('Deleted')
+const handleSetRegion = (e: MouseEvent, region: string, index: number) => {
+  console.log(
+    `Clicked ${index + 1} (${e.pageX}, ${e.pageY}): ${region}`
+  );
 };
 
 function App() {
+  const [showAlert, setShowAlert] = useState(false);
+
   return (
     <div>
       <Message />
       <ListGroup items={regions} heading='Region' onSelect={handleSetRegion} />
-      <Alert>
-        Here is some useful information~ <span>{'\u2615'}</span>
-      </Alert>
-      <Alert variant='info'>Maybe not?</Alert>
-      <div style={{display: 'flex', gap: '3px'}}>
+
+      <div style={{ display: 'flex', gap: '3px' }}>
         <Button onClick={() => null}>Confirm</Button>
-        <Button onClick={handleDelete}variant='danger'>Delete</Button>
+        <Button onClick={() => setShowAlert(true)} variant='danger'>
+          Delete
+        </Button>
       </div>
+
+      {showAlert && (
+        <Alert
+          variant='danger'
+          strong='Are you sure?'
+          onDismiss={() => setShowAlert(false)}
+        >
+          Deleting this item is a permenant action. <span>{'\u2615'}</span>
+        </Alert>
+      )}
+
+      <Modal />
     </div>
   );
 }

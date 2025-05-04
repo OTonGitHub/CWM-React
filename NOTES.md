@@ -21,6 +21,7 @@
   - avoid using `PropsWithChildren<T>`, implicit behavior.
   - use `Readonly<T>` props sparingly, won't work with destructuring.
     - sonarCube will detect unused or reassigned props.
+  - avoiding dot import, will allow SonarScan for unused props.
   - use Pascal for interfaces and types.
 
 ### Commands
