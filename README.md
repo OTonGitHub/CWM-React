@@ -1,54 +1,47 @@
-# React + TypeScript + Vite
+### Conventions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Imports
+  - alias importing `React` not necessary.
+    - is already default export, and works with libraries.
+    - new jsx transformations are used now.
+  - always mark `type` for non-value or type symbols to help tree-shaking.
+    - example: `import {type ReactNode} from 'react'`
+- Function Signature
+  - func decleration is hoisted, shows func on IDE, arrow function is typeSafe.
+  - use const arrow funcs, not func definitions for FCs.
+    - predictable scopes, no funny `this` behavior
+    - for function declerations, scope of `this` depends.
+  - do not use `React.FC<T>` for typing arrow functions.
+    - not necessary anymore, FCs are first-class now.
+    - introduces implicit behavior like injecting children in prop.
+    - extra generic unused parameters.
+  - set defaults, do not use old `.defaultProps` behavior. Runtime heavy.
+- Props
+  - prefer interface, experimenting with types.
+  - avoid using `PropsWithChildren<T>`, implicit behavior.
+  - use `Readonly<T>` props sparingly, won't work with destructuring.
+    - sonarCube will detect unused or reassigned props.
+  - avoiding dot import, will allow SonarScan for unused props.
+  - use Pascal for interfaces and types.
 
-Currently, two official plugins are available:
+### Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### React
 
-## Expanding the ESLint configuration
+- `npm create vite`
+- `npm i (or npm install)`
+- `npm run dev`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+#### UI Stuff
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- `npm i bootstrap` # (5.3.5)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### Git
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `git init`
+- `git add -A .`
+- `git branch -M main`
+- `git commit -am "init commit"`
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### TBT Original
+- render app in 2 nodes, see if session shared.
