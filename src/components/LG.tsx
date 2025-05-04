@@ -6,8 +6,8 @@ interface Props {
   onSelect: (item: string) => void;
 }
 
-function ListGroup({ heading, items, onSelect }: Readonly<Props>) {
-  // avoiding dot to allow SonarScan
+const ListGroup = ({ heading, items, onSelect }: Readonly<Props>) => {
+  // avoiding dot import to allow SonarScan
   const [selectIX, setSelectIX] = useState(-1);
 
   const handleClick = (event: MouseEvent, area: string, index: number) => {
@@ -42,11 +42,11 @@ function ListGroup({ heading, items, onSelect }: Readonly<Props>) {
   };
 
   return (
-    <>
+    <div>
       <h2>{heading}</h2>
       {generateLG(items)}
-    </>
+    </div>
   );
 }
 
-export default ListGroup;
+export  default ListGroup;
