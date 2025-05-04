@@ -1,18 +1,16 @@
 import { type ReactNode } from 'react';
 
-type AlertType = 'success' | 'info' | 'danger';
-
 interface Props {
   children: ReactNode;
-  variant?: AlertType;
+  type?: 'success' | 'info' | 'danger';
   strong?: string;
   onDismiss: () => void;
 }
 
-const Alert = ({ children, strong, onDismiss, variant = 'info' }: Props) => {
+const Alert = ({ children, strong, onDismiss, type = 'info' }: Props) => {
   return (
     <div
-      className={`alert alert-${variant} alert-dismissible fade show`}
+      className={`alert alert-${type} alert-dismissible fade show`}
       role='alert'
     >
       {strong && (

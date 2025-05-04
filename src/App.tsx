@@ -34,14 +34,14 @@ function App() {
 
       <div style={{ display: 'flex', gap: '3px' }}>
         <Button onClick={() => null}>Confirm</Button>
-        <Button onClick={() => setShowAlert(true)} variant='danger'>
+        <Button onClick={() => setShowAlert(true)} type='danger'>
           Delete
         </Button>
       </div>
 
       {showAlert && (
         <Alert
-          variant='danger'
+          type='danger'
           strong='Are you sure?'
           onDismiss={() => setShowAlert(false)}
         >
