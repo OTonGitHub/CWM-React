@@ -1,4 +1,4 @@
-import { type MouseEvent, useState} from 'react';
+import { type MouseEvent, useState } from 'react';
 
 interface Props {
   items: string[];
@@ -7,38 +7,28 @@ interface Props {
 }
 
 const ListGroup = ({ heading, items, onSelect }: Props) => {
-  const [selectIX, setSelectIX] = useState(-1);
+  const [selected, setSelected] = useState(-1);
 
-  const generateLG = (list: string[]) => {
-    if (list.length === 0) return <p>N/A</p>;
-    return (
-      <ul className='list-group'>
-        {list.map((item, index) => (
+  return items.length === 0 ? (
+    <p>N/A</p>
+  ) : (
+    <ul className='menu bg-base-200 rounded-box w-56 mb-4'>
+      <li className='menu-title'>{heading}</li>
+      {items.map((item, index) => (
+        <li key={item}>
           <button
-            key={item}
-            className={
-              index === selectIX
-                ? 'list-group-item list-group-item-action active'
-                : 'list-group-item list-group-item-action'
-            }
-            onClick={(e) => {
+            className={index === selected ? 'menu-active' : ''}
+            onClick={(e: MouseEvent) => {
               onSelect(e, item, index);
-              setSelectIX(index);
+              setSelected(index);
             }}
           >
             {item}
           </button>
-        ))}
-      </ul>
-    );
-  };
-
-  return (
-    <div>
-      <h2>{heading}</h2>
-      {generateLG(items)}
-    </div>
+        </li>
+      ))}
+    </ul>
   );
-}
+};
 
 export default ListGroup;

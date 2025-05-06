@@ -27,11 +27,11 @@ function App() {
   const [showAlert, setShowAlert] = useState(false);
 
   return (
-    <div>
+    <div className="w-full px-4 py-8 md:px-8 lg:px-16">
       <Message />
       <ListGroup items={regions} heading='Region' onSelect={handleSetRegion} />
 
-      <div style={{ display: 'flex', gap: '3px' }}>
+      <div className="flex gap-3 mt-4 mb-4">
         <Button onClick={() => null}>Confirm</Button>
         <Button onClick={() => setShowAlert(true)} type='danger'>
           Delete
@@ -40,11 +40,11 @@ function App() {
 
       {showAlert && (
         <Alert
-          type='danger'
+          type='warning'
           strong='Are you sure?'
           onDismiss={() => setShowAlert(false)}
         >
-          Deleting this item is a permenant action. <span>{'\u2615'}</span>
+          This will delete the Task permenantly! <span>{'\u2615'}</span>
         </Alert>
       )}
     </div>
