@@ -91,11 +91,11 @@ const variantConfig: Record<Variant, VariantConfig> = {
 interface Props {
   children: ReactNode;
   variant?: Variant;
-  strong?: string;
+  heading?: string;
   onDismiss: () => void;
 }
 
-const Alert = ({ children, strong, onDismiss, variant = 'info' }: Props) => {
+const Alert = ({ children, heading: strong, onDismiss, variant = 'info' }: Props) => {
   const { icon, alertVariant, buttonVariant } = variantConfig[variant];
 
   return (
