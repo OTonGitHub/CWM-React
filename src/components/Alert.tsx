@@ -1,14 +1,14 @@
 import { type ReactNode } from 'react';
 
-type Variant = 'info' | 'success' | 'warning' | 'error';
+type AlertVariant = 'info' | 'success' | 'warning' | 'error';
 
-type VariantConfig = {
+type AlertConfig = {
   icon: ReactNode;
   alertVariant: string;
   buttonVariant: string;
 };
 
-const variantConfig: Record<Variant, VariantConfig> = {
+const alertVariants: Record<AlertVariant, AlertConfig> = {
   // <Key (type?), Type>
   info: {
     icon: (
@@ -90,13 +90,13 @@ const variantConfig: Record<Variant, VariantConfig> = {
 
 interface Props {
   children: ReactNode;
-  variant?: Variant;
+  variant?: AlertVariant;
   heading?: string;
   onDismiss: () => void;
 }
 
 const Alert = ({ children, heading: strong, onDismiss, variant = 'info' }: Props) => {
-  const { icon, alertVariant, buttonVariant } = variantConfig[variant];
+  const { icon, alertVariant, buttonVariant } = alertVariants[variant];
 
   return (
     <div

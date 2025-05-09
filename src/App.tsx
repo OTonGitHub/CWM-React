@@ -33,10 +33,13 @@ function App() {
       <ListGroup items={regions} heading='Region' onSelect={handleSetRegion} />
 
       <div className='flex gap-3 mt-4 mb-4'>
-        <Button onClick={() => setShowConfirmModal(true)}>Confirm</Button>
-        <Button onClick={() => setShowAlert(true)} type='danger'>
+        <Button onClick={() => setShowConfirmModal(true)} variant='primary'>
+          Confirm
+        </Button>
+        <Button onClick={() => setShowAlert(true)} variant='error'>
           Delete
         </Button>
+        <Button onClick={() => null}>Nothing</Button>
       </div>
 
       {showAlert && (

@@ -35,8 +35,7 @@
 #### UI Stuff
 
 - `npm i bootstrap` # (5.3.5)
-- `npm install tailwindcss@latest @tailwindcss/vite@latest`
-- `npm install daisyui@latest`
+- `npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest`
 
 #### Git
 
