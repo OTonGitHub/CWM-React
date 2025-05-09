@@ -6,8 +6,6 @@ import Alert from './components/Alert';
 import Button from './components/Button';
 import Modal from './components/Modal';
 
-import './App.css';
-
 const regions =
   Math.random() < 0.9
     ? [
