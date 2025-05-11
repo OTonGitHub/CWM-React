@@ -95,7 +95,7 @@ interface Props {
   onDismiss: () => void;
 }
 
-const Alert = ({ children, heading: strong, onDismiss, variant = 'info' }: Props) => {
+const Alert = ({ children, heading, onDismiss, variant = 'info' }: Props) => {
   const { icon, alertVariant, buttonVariant } = alertVariants[variant];
 
   return (
@@ -106,7 +106,7 @@ const Alert = ({ children, heading: strong, onDismiss, variant = 'info' }: Props
       {icon}
 
       <div>
-        {strong && <h3 className='font-bold'>{strong}</h3>}
+        {heading && <h3 className='font-bold'>{heading}</h3>}
         <div className='text-xs'>{children}</div>
       </div>
 

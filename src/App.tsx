@@ -5,6 +5,7 @@ import ListGroup from './components/LG';
 import Alert from './components/Alert';
 import Button from './components/Button';
 import Modal from './components/Modal';
+import Cursor from './components/Cursor';
 
 const regions =
   Math.random() < 0.9
@@ -28,39 +29,46 @@ function App() {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   return (
-    <div className='w-full px-4 py-8 md:px-8 lg:px-16'>
-      <Message />
-      <ListGroup items={regions} heading='Region' onSelect={handleSetRegion} />
+    <>
+      <Cursor />
+      <div className='w-full px-4 py-8 md:px-8 lg:px-16'>
+        <Message />
+        <ListGroup
+          items={regions}
+          heading='Region'
+          onSelect={handleSetRegion}
+        />
 
-      <div className='flex gap-3 mt-4 mb-4'>
-        <Button onClick={() => setShowConfirmModal(true)} variant='primary'>
-          Confirm
-        </Button>
-        <Button onClick={() => setShowAlert(true)} variant='error'>
-          Delete
-        </Button>
-        <Button onClick={() => null}>Nothing</Button>
-      </div>
+        <div className='flex gap-3 mt-4 mb-4'>
+          <Button onClick={() => setShowConfirmModal(true)} variant='primary'>
+            Confirm
+          </Button>
+          <Button onClick={() => setShowAlert(true)} variant='error'>
+            Delete
+          </Button>
+          <Button onClick={() => null}>Nothing</Button>
+        </div>
 
-      {showAlert && (
-        <Alert
-          heading='Are you sure?'
-          variant='error'
-          onDismiss={() => setShowAlert(false)}
+        {showAlert && (
+          <Alert
+            heading='Are you sure?'
+            variant='error'
+            onDismiss={() => setShowAlert(false)}
+          >
+            This will delete the Task permenantly!
+          </Alert>
+        )}
+
+        <Modal
+          heading='Region Selected!'
+          id={confirmModal}
+          open={showConfirmModal}
+          onClose={() => setShowConfirmModal(false)}
         >
-          This will delete the Task permenantly!
-        </Alert>
-      )}
-
-      <Modal
-        heading='Region Selected!'
-        id={confirmModal}
-        open={showConfirmModal}
-        onClose={() => setShowConfirmModal(false)}
-      >
-        This region will be used in your submission form.
-      </Modal>
-    </div>
+          This region will be used in your submission form.
+        </Modal>
+      </div>
+    </>
   );
 }
 
