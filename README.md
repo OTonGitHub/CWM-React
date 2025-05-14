@@ -34,11 +34,9 @@
 
 #### UI Stuff
 
-- `npm i bootstrap` # (5.3.5)
 - `npm install tailwindcss@latest @tailwindcss/vite@latest daisyui@latest`
-- `npm uninstall bootstrap`
-- `grep bootstrap package.json` # make sure no trace
 - `npm i styled-components`
+- `npm i react-icons`
 
 #### Git
 
