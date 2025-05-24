@@ -25,7 +25,7 @@ const EmojiCursor = styled.div<{ visible: boolean }>`
   font-size: 24px;
   pointer-events: none;
   z-index: 9999;
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  opacity: ${(visible) => (visible ? 1 : 0)};
   transition: opacity 0.1s;
 `;
 
